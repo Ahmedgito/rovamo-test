@@ -29,7 +29,7 @@ const Navbar = () => {
       transition={{ duration: 0.6, ease: 'easeInOut' }}
       className="mt-6 max-w-[88rem] mx-auto border border-[#343434] "
     >
-      <nav className="bg-transparent font-grotesk font-thin flex items-center justify-between px-4 py-3">
+      <nav className="bg-transparent font-grotesk font-normal flex items-center justify-between px-4 py-3">
         {/* Left Section: Logo + Nav Items */}
         <div className="flex items-center space-x-8">
           {/* Logo */}

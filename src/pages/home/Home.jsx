@@ -7,8 +7,7 @@ const Home = () => {
         <>
 
         <Section1/>
-
-
+        
         </>
     );
 }
