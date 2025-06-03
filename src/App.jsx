@@ -1,12 +1,14 @@
-import DemoHeroGeometric from "@/components/demo";
-import BentoGridDemo from "@/components/feature";
 import './App.css';
+import Layout from './layout/Layout';
+
 function App() {
   return (
     <>
-      <DemoHeroGeometric />
-      <div className="dark bg-black min-h-screen"> <BentoGridDemo/></div>
-     
+      <Layout>
+        <h1 className="text-2xl">Welcome!</h1>
+        <p>This is your main content area.</p>
+      </Layout>
+
     </>
   );
 }
