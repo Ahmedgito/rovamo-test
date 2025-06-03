@@ -3,6 +3,7 @@ import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
+import Contact from "../../components/ui/Contact";
 
 const navItems = [
   { number: '01.', label: 'Services', href: '#' },
@@ -11,49 +12,69 @@ const navItems = [
   { number: '04.', label: 'Careers', href: '#' },
 ];
 
+const navLinkVariants = {
+  hidden: { opacity: 0, y: 10 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: 0.2 + i * 0.15, duration: 0.4 },
+  }),
+};
+
 const Navbar = () => {
   return (
-    <div className="mt-6 max-w-[88rem] mx-auto border border-[#343434] rounded">
+    <motion.div
+      initial={{ opacity: 0, borderColor: 'rgba(52,52,52,0)' }}
+      animate={{ opacity: 1, borderColor: '#343434' }}
+      transition={{ duration: 0.6, ease: 'easeInOut' }}
+      className="mt-6 max-w-[88rem] mx-auto border border-[#343434] rounded"
+    >
       <nav className="bg-transparent flex items-center justify-between px-4 py-3">
         {/* Left Section: Logo + Nav Items */}
         <div className="flex items-center space-x-8">
           {/* Logo */}
-          <div className="flex items-center justify-center w-14 h-14 rounded-full border-2  text-white font-bold text-lg">
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
+            className="flex items-center justify-center w-14 h-14 rounded-full border-2 text-white font-bold text-lg"
+          >
             TM
-          </div>
+          </motion.div>
 
           {/* Nav Links */}
           <ul className="flex ms-28 space-x-12 text-white font-semibold">
-            {navItems.map((item) => (
-              <li key={item.label} className="flex flex-col leading-tight">
+            {navItems.map((item, i) => (
+              <motion.li
+                key={item.label}
+                custom={i}
+                variants={navLinkVariants}
+                initial="hidden"
+                animate="visible"
+                className="flex flex-col leading-tight"
+              >
                 <span className="text-sm text-gray-400">{item.number}</span>
                 <a href={item.href} className="hover:text-gray-300">
                   {item.label}
                 </a>
-              </li>
+              </motion.li>
             ))}
           </ul>
         </div>
 
         {/* Right Section: Contact Button */}
-    <Button className="group flex items-center gap-4 font-semibold text-white bg-transparent hover:bg-transparent">
-      Contact
-
-      {/* Circle container stays still */}
-      <div className="w-10 h-10 flex items-center justify-center rounded-full bg-white text-black overflow-hidden">
         <motion.div
-          className="flex"
-          initial={{ x: 0 }}
-          whileHover={{ x: 4 }}
-          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.8, duration: 0.4 }}
         >
-          <ArrowRight className="w-4 h-4" />
+          <Button className="group flex items-center gap-4 font-semibold text-white bg-transparent hover:bg-transparent">
+            Contact
+            <Contact />
+          </Button>
         </motion.div>
-      </div>
-    </Button>
-
       </nav>
-    </div>
+    </motion.div>
   );
 };
 
