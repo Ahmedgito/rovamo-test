@@ -27,7 +27,7 @@ const Navbar = () => {
       initial={{ opacity: 0, borderColor: 'rgba(52,52,52,0)' }}
       animate={{ opacity: 1, borderColor: '#343434' }}
       transition={{ duration: 0.6, ease: 'easeInOut' }}
-      className="mt-6 max-w-[88rem] mx-auto border border-[#343434] rounded"
+      className="mt-6 max-w-[88rem] mx-auto border border-[#343434] "
     >
       <nav className="bg-transparent flex items-center justify-between px-4 py-3">
         {/* Left Section: Logo + Nav Items */}
@@ -43,7 +43,7 @@ const Navbar = () => {
           </motion.div>
 
           {/* Nav Links */}
-          <ul className="flex ms-28 space-x-12 text-white font-semibold">
+          <ul className="flex ms-28 space-x-12 text-white font-semibold relative">
             {navItems.map((item, i) => (
               <motion.li
                 key={item.label}
@@ -51,12 +51,22 @@ const Navbar = () => {
                 variants={navLinkVariants}
                 initial="hidden"
                 animate="visible"
-                className="flex flex-col leading-tight"
+                className="flex flex-col leading-tight group relative"
               >
                 <span className="text-sm text-gray-400">{item.number}</span>
-                <a href={item.href} className="hover:text-gray-300">
+                <a
+                  href={item.href}
+                  className="hover:text-gray-300 transition-colors duration-300 relative pb-1"
+                >
                   {item.label}
+
+                  {/* underline animation */}
+
                 </a>
+
+                {/* navbar border highlight effect */}
+                <span className="absolute -bottom-[20px] left-0 w-0 h-[2px] bg-[#fff] transition-all duration-300 group-hover:w-full" />
+
               </motion.li>
             ))}
           </ul>
