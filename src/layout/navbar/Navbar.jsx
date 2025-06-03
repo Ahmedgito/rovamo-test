@@ -2,6 +2,7 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { motion } from 'framer-motion';
 
 const navItems = [
   { number: '01.', label: 'Services', href: '#' },
@@ -12,7 +13,7 @@ const navItems = [
 
 const Navbar = () => {
   return (
-    <div className="mt-6 max-w-[90rem] mx-auto border border-[#343434] rounded">
+    <div className="mt-6 max-w-[88rem] mx-auto border border-[#343434] rounded">
       <nav className="bg-transparent flex items-center justify-between px-4 py-3">
         {/* Left Section: Logo + Nav Items */}
         <div className="flex items-center space-x-8">
@@ -35,13 +36,22 @@ const Navbar = () => {
         </div>
 
         {/* Right Section: Contact Button */}
-        <Button
-          variant="ghost"
-          className="bg-white text-black font-semibold rounded-full px-5 py-2 flex items-center gap-2 hover:bg-gray-200"
+    <Button className="group flex items-center gap-4 font-semibold text-white bg-transparent hover:bg-transparent">
+      Contact
+
+      {/* Circle container stays still */}
+      <div className="w-10 h-10 flex items-center justify-center rounded-full bg-white text-black overflow-hidden">
+        <motion.div
+          className="flex"
+          initial={{ x: 0 }}
+          whileHover={{ x: 4 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
         >
-          Contact
           <ArrowRight className="w-4 h-4" />
-        </Button>
+        </motion.div>
+      </div>
+    </Button>
+
       </nav>
     </div>
   );

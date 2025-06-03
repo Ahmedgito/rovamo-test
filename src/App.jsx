@@ -1,12 +1,12 @@
 import './App.css';
 import Layout from './layout/Layout';
+import Home from './pages/home/Home';
 
 function App() {
   return (
     <>
       <Layout>
-        <h1 className="text-2xl">Welcome!</h1>
-        <p>This is your main content area.</p>
+        <Home/>
       </Layout>
 
     </>
